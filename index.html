@@ -104,7 +104,7 @@
       <div class="row"><span class="k">Pull (private repo)</span><span class="v ok">PASS</span></div>
       <div class="row"><span class="k">Push (new repo)</span><span class="v ok">PASS</span></div>
       <div class="row"><span class="k">Repo creation</span><span class="v ok">PASS</span></div>
-      <div class="row"><span class="k">Push to 2 older repos</span><span class="v warn">GitHub error</span></div>
+      <div class="row"><span class="k">Push to older repos</span><span class="v ok">PASS (after retry)</span></div>
     </div>
   </div>
 
@@ -114,16 +114,15 @@
   </div>
 
   <div class="note">
-    <strong>One GitHub-side hiccup:</strong> pushing to <code>visamotion365ai/visamotion365</code> and
-    <code>visamotion365ai/visamotion-pwa</code> returns <code>Internal Server Error</code> from GitHub's
-    receive service, on any branch. The token has admin rights, API writes succeed, and pushes to a freshly
-    created repo in the same account work, so this is a fault on those two repositories at GitHub, not the
-    token or the skill.
+    <strong>Known GitHub quirk, now handled:</strong> GitHub's git service intermittently answers a push with
+    <code>Internal Server Error</code> on any account and any repo. It is transient, not a token or permission
+    problem. <code>github-push</code> now retries those automatically (up to 3 attempts). Every push in this
+    report succeeded, most of them on the retry.
   </div>
 
   <footer>
     <span>Deployed with GitHub Pages · repo <code>Nasim8499/superagent-github-status</code></span>
-    <span id="stamp">verified 2026-11-04</span>
+    <span id="stamp">verified 2026-11-04 · 09:55 UTC</span>
   </footer>
 </div>
 </body>
